@@ -12,6 +12,15 @@ services:
       - app
     container_name: nginx
 
+  app:
+    build:
+      context: .
+      dockerfile: _docker/app/Dockerfile
+    volumes:
+      - ./:/var/www
+    depends_on:
+      - db
+    container_name: app
 
   db:
       image: mysql:8.0
